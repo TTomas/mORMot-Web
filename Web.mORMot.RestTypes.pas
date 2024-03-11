@@ -12,6 +12,8 @@ Parts
 
 -------------------------------------------------------------------------------}
 
+{$mode Delphi}
+
 interface
 
 uses
@@ -21,10 +23,6 @@ uses
   Web.mORMot.Types;
 
 type
-  TProcedureInt = reference to procedure(result: integer);
-  TProcedureDouble = reference to procedure(result: double);
-  TProcedureJSValue = reference to procedure(result: JSValue);
-  TProcedureString = reference to procedure(result: string);
 
   /// used to store the request of a REST call
   {$ifdef USEOBJECTINSTEADOFRECORD}

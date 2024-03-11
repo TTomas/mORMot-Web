@@ -16,6 +16,7 @@ uses
   mormot.rest.http.server,
   mormot.soa.core,
   mormot.soa.server,
+  mormot.soa.codegen,
   data in 'data.pas',
   server in 'server.pas';
 
@@ -36,7 +37,8 @@ begin
     // -- Initialize a TObjectList-based database engine
     CalcServer := TRestServerFullMemory.Create(aModel, 'test.json', false, true);
     //factory := CalcServer.Services.Info(TypeInfo(ICalculator)) as TServiceFactoryServer;
-
+    AddToServerWrapperMethod(CalcServer,
+        ['..\..\templates']);
     try
       CalcServer.ServiceDefine(TCalculatorService, [ICalculator], sicShared);
 

@@ -20,8 +20,6 @@ uses
   Web,
   Types,
 
-  WebLib.JSON,
-
   Web.mORMot.Types,
   Web.mORMot.RestTypes,
   Web.mORMot.HttpTypes,
@@ -54,10 +52,6 @@ implementation
 //------------------------------------------------------------------------------
 /// marshall {result:...,id:...} and {result:...} body answers
 function CallGetResult(const aCall: TRestURIParams; var outID: NativeInt): TJSObject;
-var
-  //doc: string;
-  json: TJSON;
-  jsonObj: TJSONObject;
 begin
   // -- Process the JSValue in the calling procedure.
   outID := 0;
@@ -65,13 +59,7 @@ begin
   if aCall.OutStatus <> HTTP_SUCCESS then
     exit;
 
-  json := TJSON.Create;
-  try
-    jsonObj := json.Parse(aCall.OutBody);
-    result := jsonObj.JSObject;
-  finally
-    json.Free;
-  end;
+  result := TJSJSON.parseObject(aCall.OutBody);
 end;
 //------------------------------------------------------------------------------
 // dedicated function using faster JavaScript library

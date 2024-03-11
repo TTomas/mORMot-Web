@@ -2,6 +2,7 @@ unit server;
 
 interface
 
+{$mode Delphi}
 {$I mormot.defines.inc}
 uses
   SysUtils,
@@ -22,18 +23,26 @@ uses
   data;
 
 type
+
   TCalculatorService = class(TInjectableObjectRest, ICalculator)
   public
     function Add(n1, n2: integer): integer;
-    function ArrayValue(arrJSON: RawUTF8; ix: integer): variant;
-    function CountArray(jsn: RawUTF8): integer;
-    function SumArray(jsn: RawUTF8): double;
+    function ArrayValue(const arrJSON: RawUtf8; ix: integer): variant;
+    function CountArray(const jsn: RawUtf8): integer;
+    function SumArray(const jsn: RawUtf8): double;
+    procedure FullName(const aFirstName, aLastName: RawUtf8;
+      var aFullName: RawUtf8; var aSize: integer);
   end;
 
   TArrayRec = packed record
     Arr: TDoubleDynArray;
     VarArr: TVariantDynArray;
   end;
+
+{$ifdef FPC}
+const
+  __TArrayRec = 'Arr TDoubleDynArray VarArr TVariantDynArray';
+{$endif}
 
   {TCalcServerAuthentication = class(TRestServerAuthenticationHttpBasic)
   public
@@ -74,7 +83,7 @@ begin
   result := n1 + n2;
 end;
 //------------------------------------------------------------------------------
-function TCalculatorService.ArrayValue(arrJSON: RawUTF8;
+function TCalculatorService.ArrayValue(const arrJSON: RawUtf8;
   ix: integer): variant;
 var
   arr: TVariantDynArray;
@@ -83,23 +92,31 @@ begin
   result := arr[ix];
 end;
 //------------------------------------------------------------------------------
-function TCalculatorService.CountArray(jsn: RawUTF8): integer;
+function TCalculatorService.CountArray(const jsn: RawUtf8): integer;
 var
   i: integer;
   rec: TArrayRec;
 begin
-  RecordLoadJSON(rec, @jsn[1], TypeInfo(TArrayRec));
+  RecordLoadJSON(rec, jsn, TypeInfo(TArrayRec));
   result := Length(rec.VarArr);
 end;
 //------------------------------------------------------------------------------
-function TCalculatorService.SumArray(jsn: RawUTF8): double;
+function TCalculatorService.SumArray(const jsn: RawUtf8): double;
 var
   i: integer;
   rec: TArrayRec;
 begin
   RecordLoadJSON(rec, @jsn[1], TypeInfo(TArrayRec));
+  result := 0;
   for i := 0 to Length(rec.Arr) do
     result := result + rec.Arr[i];
+end;
+
+procedure TCalculatorService.FullName(const aFirstName, aLastName: RawUtf8;
+  var aFullName: RawUtf8; var aSize: integer);
+begin
+  aFullName := aFirstName + ' ' + aLastName;
+  aSize := Length(aFullName);
 end;
 
 
@@ -128,6 +145,11 @@ end;}
 
 
 
-
+{$ifdef FPC}
+initialization
+  Rtti.RegisterType(TypeInfo(TDoubleDynArray));
+  Rtti.RegisterType(TypeInfo(TVariantDynArray));
+  Rtti.RegisterFromText(TypeInfo(TArrayRec), __TArrayRec);
+{$endif}
 
 end.

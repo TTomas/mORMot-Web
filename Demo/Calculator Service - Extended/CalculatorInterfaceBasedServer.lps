@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="28"/>
+        <CursorPos X="16" Y="41"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="data.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="9"/>
+        <CursorPos X="9" Y="38"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\comp3\mORMot2\src\rest\mormot.rest.memserver.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="167"/>
+        <CursorPos X="17" Y="183"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="87"/>
+        <CursorPos X="9" Y="155"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\comp3\mORMot2\src\mormot.defines.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="130"/>
+        <CursorPos X="19" Y="143"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\..\Comp3\mORMot2\src\mormot.defines.inc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="130"/>
+        <CursorPos X="9" Y="143"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="16">
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="19" Column="4" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="18" Column="57"/>
+      </Position>
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="19" Column="5" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="37" Column="45" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="20" Column="5" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="91" Column="25" TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="81" Column="36" TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="5" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="93" Column="30" TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="41" Column="62" TopLine="19"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="137" Column="26" TopLine="107"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="38" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="141" Column="43" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="95" Column="23" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="96" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="94" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
+        <Caret Line="5" Column="13"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

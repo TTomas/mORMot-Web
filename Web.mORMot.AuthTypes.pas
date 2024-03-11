@@ -20,8 +20,6 @@ interface
 uses
   JS,
 
-  WebLib.Crypto,
-
   {$IFDEF JS_SHA}
   JS_SHA256,
   {$ELSE}

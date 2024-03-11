@@ -10,6 +10,8 @@ https://github.com/synopse/mORMot
 
 -------------------------------------------------------------------------------}
 
+{$mode Delphi}
+
 interface
 
 uses

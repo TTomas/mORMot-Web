@@ -24,9 +24,6 @@ uses
   JS,
   Types,
 
-  WebLib.Utils,
-  WebLib.Crypto,
-
  {$IFDEF JS_SHA}
   JS_SHA256,
   {$ELSE}
@@ -257,6 +254,9 @@ type
 
 
   /// REST client access class
+
+  { TRestClientURI }
+
   TRestClientURI = class(TRest)
   protected
     fAuthentication: TRestServerAuthentication;
@@ -384,9 +384,9 @@ type
     // the network is offline, or the server is late to answer
     // - but synchronous code is somewhat easier to follow than asynchronous
     // - you should not call it, but directly TServiceClient* methods
-    //function CallRemoteServiceSynch(aCaller: TServiceClientAbstract;
-    //  const aMethodName: string; aExpectedOutputParamsCount: integer;
-    //  const aInputParams: TJSValueDynArray; aReturnsCustomAnswer: boolean = false): TJSValueDynArray;
+    function CallRemoteServiceSynch(aCaller: TServiceClientAbstract;
+      const aMethodName: string; aExpectedOutputParamsCount: integer;
+      const aInputParams: TJSValueDynArray; aReturnsCustomAnswer: boolean = false): TJSValueDynArray;
 
     /// set this property to TRUE if the server expects only APPLICATION/JSON
     // - applies only for AJAX clients (i.e. SmartMobileStudio platform)
@@ -856,6 +856,53 @@ begin
 
   CallRemoteServiceInternal(Call, aCaller, aMethodName, TJSJSON.stringify(JSValue(aInputParams)));
 end;
+
+function TRestClientURI.CallRemoteServiceSynch(aCaller: TServiceClientAbstract;
+  const aMethodName: string; aExpectedOutputParamsCount: integer;
+  const aInputParams: TJSValueDynArray; aReturnsCustomAnswer: boolean): TJSValueDynArray;
+var Call: TRestURIParams;
+    outResult: TJSObject;
+    outID: NativeInt;
+    jsv: JSValue;
+    arrResults: TJSValueDynArray;
+
+procedure RaiseError;
+begin
+  raise EServiceException.CreateFmt('Error calling %s.%s - returned status %d',
+    [aCaller.fServiceName,aMethodName,Call.OutStatus]);
+end;
+begin
+  // ForceServiceResultAsJSONObject not implemented yet
+  CallRemoteServiceInternal(Call,aCaller,aMethodName, TJSJSON.Stringify(JSValue(aInputParams)));
+  if aReturnsCustomAnswer then begin
+    if Call.OutStatus<>HTTP_SUCCESS then
+      RaiseError;
+    TJSArray(result).push(Call.OutBody);
+    exit;
+  end;
+  outResult := CallGetResult(Call,outID); // from {result:...,id:...}
+  if not Assigned(outResult) then
+    RaiseError;
+//  if (aCaller.fInstanceImplementation=sicClientDriven) and (outID<>0) then
+//     (aCaller as TServiceClientAbstractClientDriven).fClientID := IntToStr(outID);
+  if aExpectedOutputParamsCount=0 then
+    exit; // returns default []
+  if assigned(outResult) then
+  begin
+    jsv := outResult.Properties['result'];
+    if isArray(jsv) then
+    begin
+      arrResults := TJSValueDynArray(jsv);
+      if Length(arrResults) = aExpectedOutputParamsCount then
+        result := arrResults
+      else
+        raise EServiceException.CreateFmt('Error calling %s.%s - '+
+          'received %d parameters (expected %d)',
+          [aCaller.fServiceName,aMethodName,Length(arrResults),aExpectedOutputParamsCount]);
+    end;
+  end;
+end;
+
 //------------------------------------------------------------------------------
 procedure TRestClientURI.CallRemoteServiceInternal(var Call: TRestURIParams;
   aCaller: TServiceClientAbstract; const aMethod, aParams: string);
@@ -1036,7 +1083,7 @@ var
   base64: RawUTF8;
 begin
   base64 := aUsername + ':' + aPasswordClear;
-  base64 := StringToBase64(base64);
+  base64 := window.btoa(base64);
   (*{$ifdef ISSMS}
   base64 := w3_base64encode(base64);
   {$else}

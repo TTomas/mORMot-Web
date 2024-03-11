@@ -9,18 +9,20 @@ See original file for copyright and licence information at:
 https://github.com/synopse/mORMot
 
 -------------------------------------------------------------------------------}
+{$mode Delphi}
 
 interface
 
 uses
-  SysUtils;
+  SysUtils,
+  JS;
 
 type
   // HTTP body may not match the string type, and could be binary
   THttpBody = string;
 
   /// alias to share the same string type between client and server
-  RawUTF8 = string;
+  RawUtf8 = string;
 
   TTimeLog = NativeInt;      //Int53
   TModTime = TTimeLog;
@@ -42,6 +44,23 @@ type
 
   TProcedureRef = reference to procedure;
 
+  function toRawUtf8(Value: JSValue): RawUtf8; // If Value is not a string, returns ''
+  function toDouble(Value: JSValue): Double;
+
 implementation
+
+function toRawUtf8(Value: JSValue): RawUtf8;
+begin
+  if IsString(Value) then
+    Result:=String(Value)
+  else
+    Result:='';
+end;
+
+function toDouble(Value: JSValue): Double;
+begin
+  Result := toNumber(Value);
+end;
+
 
 end.

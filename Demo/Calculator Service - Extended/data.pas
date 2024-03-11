@@ -20,9 +20,11 @@ type
   ICalculator = interface(IInvokable)
     ['{9A60C8ED-CEB2-4E09-87D4-4A16F496E5FE}']
     function Add(n1, n2: integer): integer;
-    function ArrayValue(arrJSON: RawUTF8; ix: integer): variant;
-    function CountArray(jsn: RawUTF8): integer;
-    function SumArray(jsn: RawUTF8): double;
+    function ArrayValue(const arrJSON: RawUtf8; ix: integer): variant;
+    function CountArray(const jsn: RawUtf8): integer;
+    function SumArray(const jsn: RawUtf8): double;
+    procedure FullName(const aFirstName, aLastName: RawUtf8;
+      var aFullName: RawUtf8; var aSize: integer);
   end;
 
 
