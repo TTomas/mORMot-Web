@@ -26,6 +26,7 @@ type
     procedure TestCountArray;
     procedure TestSumArray;
     procedure TestFullName;
+    procedure TestCat;
 
     procedure AddDivText(const aValue: string);
   protected
@@ -69,11 +70,12 @@ end;
 
 procedure TMyApplication.TestAll;
 begin
-  TestAdd;
-  TestArrayValue;
-  TestCountArray;
-  TestSumArray;
-  TestFullName;
+//  TestAdd;
+//  TestArrayValue;
+//  TestCountArray;
+//  TestSumArray;
+//  TestFullName;
+  TestCat;
 end;
 
 procedure TMyApplication.TestCountArray;
@@ -210,6 +212,24 @@ begin
     begin
       console.log('Error calling the FullName method');
     end);
+end;
+
+procedure TMyApplication.TestCat;
+var
+  pCat: TCat;
+  b: Boolean;
+begin
+  pCat.Name:='Cevin';
+  pCat.Sex:=cMale;
+  pCat.Birthday:=Date;
+  b := Calc._CatIsMale(pCat);
+  AddDivText('Sync _CatIsMale M: ' + Str(b));
+  pCat.Sex:=cFemale;
+  b := Calc._CatIsMale(pCat);
+  AddDivText('Sync _CatIsMale F: ' + Str(b));
+
+  pCat := Calc._GetCat;
+  AddDivText('Sync _GetCat: ' + TJSJSON.stringify(pCat));
 end;
 
 procedure TMyApplication.AddDivText(const aValue: string);

@@ -42,7 +42,7 @@ uses
 {{! recursive partials used to write records type definition}}
 {{<writerec}}record
 {{#fields}}
-{{nestedIdentation}}    {{propName}}: {{#typePascal}}{{typePascal}};{{/typePascal}}{{#nestedRecord}}{{>writerec}}{{nestedIdentation}}    end;{{/nestedRecord}}{{#nestedSimpleArray}}array of {{typePascal}};{{/nestedSimpleArray}}{{#nestedRecordArray}}array of {{>writerec}}{{nestedIdentation}}    end;{{/nestedRecordArray}}
+{{nestedIdentation}}    {{propName}}: {{#typeDelphi}}{{typeDelphi}};{{/typeDelphi}}{{#nestedRecord}}{{>writerec}}{{nestedIdentation}}    end;{{/nestedRecord}}{{#nestedSimpleArray}}array of {{typeDelphi}};{{/nestedSimpleArray}}{{#nestedRecordArray}}array of {{>writerec}}{{nestedIdentation}}    end;{{/nestedRecordArray}}
 {{/fields}}{{/writerec}}
 {{#withEnumerates}}
 type // define some enumeration types, used below
@@ -150,12 +150,12 @@ procedure GetClient(const aServerAddress{{#authClass}}, aUserName, aPassword{{/a
 // publish some low-level helpers for variant conversion
 // - used internally: you should not need those functions in your end-user code
 {{#enumerates}}
-function Variant2{{name}}(const _variant: variant): {{name}};
+function Variant2{{name}}(const _variant: JSValue): {{name}};
 function {{name}}ToText(const value: {{name}}): string;
 {{/enumerates}}
 {{#records}}
-function Variant2{{name}}(const Value: variant): {{name}};
-function {{name}}2Variant(const Value: {{name}}): variant;
+function Variant2{{name}}(const Value: JSValue): {{name}};
+function {{name}}2Variant(const Value: {{name}}): JSValue;
 {{/records}}
 {{#arrays}}
 function Variant2{{name}}(const _variant: variant): {{name}};
@@ -166,11 +166,11 @@ function {{name}}2Variant(const _array: {{name}}): variant;
 
 implementation
 {{<setrec}}{{#fields}}
-{{#isSimple}}  result.{{fullPropName}} := Value.{{fullPropName}};
-{{/isSimple}}{{#nestedRecord}}{{>setrec}}{{/nestedRecord}}{{#fromVariant}}  result.{{fullPropName}} := {{fromVariant}}(Value.{{fullPropName}});
+{{#isSimple}}  Result.{{fullPropName}} := {{#fromVariant}}{{fromVariant}}{{/fromVariant}}{{^fromVariant}}to{{typeDelphi}}{{/fromVariant}}(TJSObject(Value)['{{fullPropName}}']);
+{{/isSimple}}{{#nestedRecord}}{{>setrec}}{{/nestedRecord}}{{#fromVariant}}  Result.{{fullPropName}} := {{fromVariant}}(TJSObject(Value)['{{fullPropName}}']);
 {{/fromVariant}}{{#nestedSimpleArray}}  if VariantType(Value.{{fullPropName}})=jvArray then
     for var i := 0 to integer(Value.{{fullPropName}}.length)-1 do
-      result.{{fullPropName}}.Add({{typePascal}}(Value.{{fullPropName}}[i]));
+      Result.{{fullPropName}}.Add({{typePascal}}(Value.{{fullPropName}}[i]));
 {{/nestedSimpleArray}}{{#nestedRecordArray}}  if VariantType(Value.{{fullPropName}})=jvArray then begin
     var tmp: {{name}};
     tmp.{{propName}}.SetLength(1);
@@ -185,9 +185,9 @@ implementation
   end;
 {{/nestedRecordArray}}{{/fields}}{{/setrec}}
 {{<getrec}}{{#fields}}
-{{#isSimple}}  result.{{fullPropName}} := Value.{{fullPropName}};
+{{#isSimple}}  rec['{{fullPropName}}'] := Value.{{fullPropName}};
 {{/isSimple}}{{#nestedRecord}}  result.{{fullPropName}} := new JObject;
-{{>getrec}}{{/nestedRecord}}{{#toVariant}}  result.{{fullPropName}} := {{toVariant}}(Value.{{fullPropName}});
+{{>getrec}}{{/nestedRecord}}{{#toVariant}}  rec['{{fullPropName}}'] := {{toVariant}}(Value.{{fullPropName}});
 {{/toVariant}}{{#nestedSimpleArray}}  result.{{fullPropName}} := variant(Value.{{fullPropName}});
 {{/nestedSimpleArray}}{{#nestedRecordArray}}  result.{{fullPropName}} := TVariant.CreateArray;
   for var source in Value.{{fullPropName}} do begin
@@ -201,24 +201,18 @@ implementation
 {{#withEnumerates}}
 { Some helpers for enumerates types }
 
-{$HINTS OFF} // for begin asm return ... end; end below
-
-// those functions will use the existing generated string array constant
-// defined by the SMS compiler for each enumeration
-
 {{#enumerates}}
-function Variant2{{name}}(const _variant: variant): {{name}};
+function Variant2{{name}}(const _variant: JSValue): {{name}};
 begin
-  asm return @VariantToEnum(@_variant,@{{name}}); end;
+  Result := {{name}}(_variant);
 end;
 
 function {{name}}ToText(const value: {{name}}): string;
 begin
-  asm return @{{name}}[@value]; end;
+  Result := toString(value);
 end;
 
 {{/enumerates}}
-{$HINTS ON}
 
 {{/withEnumerates}}
 {{#withRecords}}
@@ -227,15 +221,18 @@ end;
   that the JSON used for transmission would match record fields naming }
 {{#records}}
 
-function Variant2{{name}}(const Value: variant): {{name}};
+function Variant2{{name}}(const Value: JSValue): {{name}};
 begin
 {{>setrec}}
 end;
 
-function {{name}}2Variant(const Value: {{name}}): variant;
+function {{name}}2Variant(const Value: {{name}}): JSValue;
+var
+  rec: TJSObject;
 begin
-  result := new JObject;
+  rec := TJSObject.new;
 {{>getrec}}
+  Result := rec;
 end;
 {{/records}}
 
@@ -303,7 +300,7 @@ end;
 
 function GetModel(aRoot: string): TOrmModel;
 begin
-  result := TOrmModel.Create([{{#orm}}{{className}}{{comma}}{{#comma}} {{/comma}}{{/orm}}], aRoot);
+  Result := TOrmModel.Create([{{#orm}}{{className}}{{comma}}{{#comma}} {{/comma}}{{/orm}}], aRoot);
 end;
 
 procedure GetClient(const aServerAddress{{#authClass}}, aUserName, aPassword{{/authClass}}: string;
@@ -360,7 +357,7 @@ begin
     [{{#args}}{{#dirInput}}{{#toVariant}}{{toVariant}}({{argName}}){{/toVariant}}{{^toVariant}}{{argName}}{{/toVariant}}{{#commaInSingle}}{{commaInSingle}} {{/commaInSingle}}{{/dirInput}}{{/args}}],
     procedure(res: TJSValueDynArray)
     begin
-      onSuccess({{#args}}{{#dirOutput}}{{#fromVariant}}{{fromVariant}}({{/fromVariant}}{{^isVariant}}to{{typeDelphi}}({{/isVariant}}res[{{indexOutResult}}{{^isVariant}}){{/isVariant}}{{#fromVariant}}){{/fromVariant}}{{#commaOutResult}},{{/commaOutResult}}{{/dirOutput}}{{/args}});
+      onSuccess({{#args}}{{#dirOutput}}{{#fromVariant}}{{fromVariant}}({{/fromVariant}}{{^isVariant}}{{^fromVariant}}to{{typeDelphi}}({{/fromVariant}}{{/isVariant}}res[{{indexOutResult}}{{^isVariant}}{{^fromVariant}}){{/fromVariant}}{{/isVariant}}{{#fromVariant}}){{/fromVariant}}{{#commaOutResult}},{{/commaOutResult}}{{/dirOutput}}{{/args}});
     end,
     onError{{#resultIsServiceCustomAnswer}}, true{{/resultIsServiceCustomAnswer}});
 end;
@@ -371,7 +368,7 @@ var
 begin
   res := fClient.CallRemoteServiceSynch(self, '{{methodName}}', {{ArgsOutputCount}},
     [{{#args}}{{#dirInput}}{{#toVariant}}{{toVariant}}({{argName}}){{/toVariant}}{{^toVariant}}{{argName}}{{/toVariant}}{{#commaInSingle}}{{commaInSingle}} {{/commaInSingle}}{{/dirInput}}{{/args}}]{{#resultIsServiceCustomAnswer}},true{{/resultIsServiceCustomAnswer}});
-{{#args}}{{#dirOutput}}  {{argName}} := {{#fromVariant}}{{fromVariant}}({{/fromVariant}}{{^isVariant}}to{{typeDelphi}}({{/isVariant}}res[{{indexOutResult}}{{^isVariant}}){{/isVariant}}{{#fromVariant}}){{/fromVariant}};
+{{#args}}{{#dirOutput}}  {{argName}} := {{#fromVariant}}{{fromVariant}}({{/fromVariant}}{{^isVariant}}{{^fromVariant}}to{{typeDelphi}}({{/fromVariant}}{{/isVariant}}res[{{indexOutResult}}{{^isVariant}}{{^fromVariant}}){{/fromVariant}}{{/isVariant}}{{#fromVariant}}){{/fromVariant}};
 {{/dirOutput}}{{/args}}end;
 
 {{/methods}}

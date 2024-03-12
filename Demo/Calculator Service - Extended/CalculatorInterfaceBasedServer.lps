@@ -8,119 +8,97 @@
       <Unit>
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="28"/>
-        <CursorPos X="16" Y="41"/>
+        <TopLine Value="32"/>
+        <CursorPos Y="58"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="data.pas"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="9"/>
-        <CursorPos X="9" Y="38"/>
+        <TopLine Value="27"/>
+        <CursorPos X="30" Y="27"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="D:\comp3\mORMot2\src\rest\mormot.rest.memserver.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="167"/>
-        <CursorPos X="17" Y="183"/>
+        <Filename Value="..\..\..\..\..\..\comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="146"/>
+        <CursorPos X="11" Y="165"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server.pas"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="87"/>
-        <CursorPos X="9" Y="155"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="113"/>
+        <CursorPos X="55" Y="129"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="D:\comp3\mORMot2\src\mormot.defines.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="130"/>
-        <CursorPos X="19" Y="143"/>
-        <UsageCount Value="10"/>
-      </Unit>
-      <Unit>
-        <Filename Value="..\..\..\..\..\Comp3\mORMot2\src\mormot.defines.inc"/>
+        <Filename Value="..\..\..\..\..\..\comp3\mORMot2\src\core\mormot.core.rtti.pas"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="130"/>
-        <CursorPos X="9" Y="143"/>
+        <TopLine Value="5502"/>
+        <CursorPos Y="5518"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="16">
+    <JumpHistory HistoryIndex="12">
       <Position>
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="19" Column="4" TopLine="6"/>
-      </Position>
-      <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="18" Column="57"/>
+        <Caret Line="11" Column="35"/>
       </Position>
       <Position>
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="19" Column="5" TopLine="4"/>
+        <Caret Line="20" Column="5"/>
       </Position>
       <Position>
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="37" Column="45" TopLine="28"/>
+        <Caret Line="40" Column="22" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="24" Column="15" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="20" Column="26" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="47" Column="3" TopLine="19"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="53" Column="16" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="38" Column="27" TopLine="23"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="37" Column="27" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="data.pas"/>
+        <Caret Line="26" Column="13" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="server.pas"/>
+        <Caret Line="138" Column="24" TopLine="119"/>
       </Position>
       <Position>
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="20" Column="5" TopLine="10"/>
+        <Caret Line="29" TopLine="23"/>
       </Position>
       <Position>
         <Filename Value="server.pas"/>
-        <Caret Line="91" Column="25" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="81" Column="36" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="5" Column="18"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="93" Column="30" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="41" Column="62" TopLine="19"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="137" Column="26" TopLine="107"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="38" TopLine="17"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="141" Column="43" TopLine="110"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="95" Column="23" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="96" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="94" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="5" Column="13"/>
+        <Caret Line="129" Column="55" TopLine="110"/>
       </Position>
     </JumpHistory>
     <RunParams>

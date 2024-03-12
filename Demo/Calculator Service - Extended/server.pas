@@ -24,6 +24,8 @@ uses
 
 type
 
+  { TCalculatorService }
+
   TCalculatorService = class(TInjectableObjectRest, ICalculator)
   public
     function Add(n1, n2: integer): integer;
@@ -32,6 +34,8 @@ type
     function SumArray(const jsn: RawUtf8): double;
     procedure FullName(const aFirstName, aLastName: RawUtf8;
       var aFullName: RawUtf8; var aSize: integer);
+    function CatIsMale(const aCat: TCat): Boolean;
+    function GetCat: TCat;
   end;
 
   TArrayRec = packed record
@@ -117,6 +121,19 @@ procedure TCalculatorService.FullName(const aFirstName, aLastName: RawUtf8;
 begin
   aFullName := aFirstName + ' ' + aLastName;
   aSize := Length(aFullName);
+end;
+
+function TCalculatorService.CatIsMale(const aCat: TCat): Boolean;
+begin
+  Result := aCat.Sex = cMale;
+  writeln(FormatDateTime('dd.mm.yyyy', aCat.Birthday));
+end;
+
+function TCalculatorService.GetCat: TCat;
+begin
+  Result.Name:='Test Name';
+  Result.Sex:=cFemale;
+  Result.Birthday:=Date;
 end;
 
 
