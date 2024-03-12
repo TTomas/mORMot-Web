@@ -36,13 +36,6 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="project1.html"/>
-        <IsPartOfProject Value="True"/>
-        <CustomData Count="1">
-          <Item0 Name="PasJSIsProjectHTMLFile" Value="1"/>
-        </CustomData>
-      </Unit>
-      <Unit>
         <Filename Value="..\..\Web.mORMot.Types.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -52,6 +45,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\Web.mORMot.RestTypes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="test.html"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>

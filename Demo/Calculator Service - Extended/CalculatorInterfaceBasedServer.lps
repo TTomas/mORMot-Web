@@ -9,96 +9,202 @@
         <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
         <IsPartOfProject Value="True"/>
         <TopLine Value="32"/>
-        <CursorPos Y="58"/>
-        <UsageCount Value="20"/>
+        <CursorPos Y="59"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="data.pas"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="27"/>
-        <CursorPos X="30" Y="27"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="16"/>
+        <CursorPos Y="50"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="..\..\..\..\..\..\comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
-        <EditorIndex Value="2"/>
+        <Filename Value="D:\comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="146"/>
         <CursorPos X="11" Y="165"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="113"/>
-        <CursorPos X="55" Y="129"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="142"/>
+        <CursorPos X="32" Y="151"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="..\..\..\..\..\..\comp3\mORMot2\src\core\mormot.core.rtti.pas"/>
-        <EditorIndex Value="1"/>
+        <Filename Value="D:\comp3\mORMot2\src\core\mormot.core.rtti.pas"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="5502"/>
         <CursorPos Y="5518"/>
         <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\core\mormot.core.data.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="892"/>
+        <CursorPos X="68" Y="916"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="643"/>
+        <CursorPos X="24" Y="664"/>
+        <UsageCount Value="12"/>
+        <Bookmarks Count="1">
+          <Item0 Y="652" ID="1"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\core\mormot.core.rtti.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="2579"/>
+        <CursorPos X="20" Y="2590"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Comp\mORMot\SynCommons.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="7988"/>
+        <CursorPos X="5" Y="8003"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\core\mormot.core.variants.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="9224"/>
+        <CursorPos X="27" Y="9232"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="12">
+    <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="11" Column="35"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
       </Position>
       <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="20" Column="5"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="376" Column="11" TopLine="359"/>
       </Position>
       <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="40" Column="22" TopLine="25"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="474" Column="53" TopLine="451"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="24" Column="15" TopLine="7"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="510" Column="11" TopLine="526"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="20" Column="26" TopLine="4"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="546" Column="11" TopLine="526"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="47" Column="3" TopLine="19"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="571" Column="11" TopLine="548"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="53" Column="16" TopLine="26"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="727" TopLine="722"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="38" Column="27" TopLine="23"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="892" TopLine="889"/>
       </Position>
       <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="37" Column="27" TopLine="11"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="376" Column="11" TopLine="360"/>
       </Position>
       <Position>
-        <Filename Value="data.pas"/>
-        <Caret Line="26" Column="13" TopLine="17"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="664" Column="60" TopLine="649"/>
       </Position>
       <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="138" Column="24" TopLine="119"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="1223" Column="54" TopLine="1198"/>
       </Position>
       <Position>
-        <Filename Value="CalculatorInterfaceBasedServer.dpr"/>
-        <Caret Line="29" TopLine="23"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="376" Column="11" TopLine="360"/>
       </Position>
       <Position>
-        <Filename Value="server.pas"/>
-        <Caret Line="129" Column="55" TopLine="110"/>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="474" Column="53" TopLine="457"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="510" Column="11" TopLine="493"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="546" Column="11" TopLine="526"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="571" Column="11" TopLine="545"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="708" TopLine="700"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="664" TopLine="649"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="708" TopLine="699"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="1219" TopLine="1204"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="704" Column="20" TopLine="699"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="713" Column="24" TopLine="699"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="846" Column="27" TopLine="827"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="855" Column="23" TopLine="830"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="871" Column="25" TopLine="846"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="898" Column="25" TopLine="873"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="993" Column="30" TopLine="1060"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="704" Column="25" TopLine="706"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Caret Line="545" Column="5" TopLine="519"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -106,4 +212,43 @@
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Line Value="1219"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Line Value="664"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Line Value="727"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Line Value="892"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\..\Comp3\mORMot2\src\soa\mormot.soa.codegen.pas"/>
+        <Line Value="708"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

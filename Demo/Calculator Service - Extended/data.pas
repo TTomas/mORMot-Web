@@ -26,6 +26,17 @@ type
     Birthday: TDateTime;
   end;
 
+  TCatDynArray = array of TCat;
+
+  TPeople = packed record
+    FirstName: RawUtf8;
+    LastName: RawUtf8;
+    Sex: TSex;
+    Birthday: TDateTime;
+    Cat: TCat;
+    Cats: TCatDynArray;
+  end;
+
   ICalculator = interface(IInvokable)
     ['{9A60C8ED-CEB2-4E09-87D4-4A16F496E5FE}']
     function Add(n1, n2: integer): integer;
@@ -36,11 +47,15 @@ type
       var aFullName: RawUtf8; var aSize: integer);
     function CatIsMale(const aCat: TCat): Boolean;
     function GetCat: TCat;
+    function GetPeople(aId: integer; var aPeople: TPeople): Boolean;
+    function AddPeople(const aPeople: TPeople): integer;
+    function AddCat2People(const aCat: TCat; var aPeople: TPeople): boolean;
   end;
 
 {$ifdef FPC}
 const
   __TCat = 'Name RawUtf8 Sex TSex Birthday TDateTime';
+  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat Cats TCatDynArray';
 {$endif}
 
 implementation
@@ -53,6 +68,8 @@ initialization
   {$ifdef FPC}
   Rtti.RegisterType(TypeInfo(TSex));
   Rtti.RegisterFromText(TypeInfo(TCat),__TCat);
+  Rtti.RegisterType(TypeInfo(TCatDynArray));
+  Rtti.RegisterFromText(TypeInfo(TPeople),__TPeople);
   {$endif}
   TInterfaceFactory.RegisterInterfaces([TypeInfo(ICalculator)]);
 

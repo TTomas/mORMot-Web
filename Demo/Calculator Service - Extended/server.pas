@@ -36,6 +36,9 @@ type
       var aFullName: RawUtf8; var aSize: integer);
     function CatIsMale(const aCat: TCat): Boolean;
     function GetCat: TCat;
+    function GetPeople(aId: integer; var aPeople: TPeople): Boolean;
+    function AddPeople(const aPeople: TPeople): integer;
+    function AddCat2People(const aCat: TCat; var aPeople: TPeople): boolean;
   end;
 
   TArrayRec = packed record
@@ -134,6 +137,36 @@ begin
   Result.Name:='Test Name';
   Result.Sex:=cFemale;
   Result.Birthday:=Date;
+end;
+
+function TCalculatorService.GetPeople(aId: integer;
+  var aPeople: TPeople): Boolean;
+begin
+  aPeople.FirstName:='Mark';
+  aPeople.LastName:='Smith';
+  aPeople.Birthday:=Now;
+  aPeople.Sex:=cMale;
+  SetLength(aPeople.Cats, 2);
+  aPeople.Cats[0].Name:='Cat1';
+  aPeople.Cats[1].Name:='Cat2';
+  Result := True;
+end;
+
+function TCalculatorService.AddPeople(const aPeople: TPeople): integer;
+begin
+  Result := random(9999);
+end;
+
+function TCalculatorService.AddCat2People(const aCat: TCat;
+  var aPeople: TPeople): boolean;
+begin
+  if aCat.Name='' then
+    Result := False
+  else
+  begin
+    DynArrayAdd(TypeInfo(TCatDynArray), aPeople.Cats, aCat);
+    Result := True;
+  end;
 end;
 
 
