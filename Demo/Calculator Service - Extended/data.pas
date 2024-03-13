@@ -27,6 +27,7 @@ type
   end;
 
   TCatDynArray = array of TCat;
+  TCat3Array = array[0..3] of TCat;
 
   TPeople = packed record
     FirstName: RawUtf8;
@@ -34,6 +35,7 @@ type
     Sex: TSex;
     Birthday: TDateTime;
     Cat: TCat;
+    Cat3: TCat3Array;
     Cats: TCatDynArray;
   end;
 
@@ -55,7 +57,7 @@ type
 {$ifdef FPC}
 const
   __TCat = 'Name RawUtf8 Sex TSex Birthday TDateTime';
-  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat Cats TCatDynArray';
+  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat Cat3 TCat3Array Cats TCatDynArray';
 {$endif}
 
 implementation
@@ -69,6 +71,7 @@ initialization
   Rtti.RegisterType(TypeInfo(TSex));
   Rtti.RegisterFromText(TypeInfo(TCat),__TCat);
   Rtti.RegisterType(TypeInfo(TCatDynArray));
+  Rtti.RegisterType(TypeInfo(TCat3Array));
   Rtti.RegisterFromText(TypeInfo(TPeople),__TPeople);
   {$endif}
   TInterfaceFactory.RegisterInterfaces([TypeInfo(ICalculator)]);
