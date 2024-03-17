@@ -27,7 +27,7 @@ type
   end;
 
   TCatDynArray = array of TCat;
-  TCat3Array = array[0..3] of TCat;
+  TCat3Array = array[0..2] of TCat;
 
   TPeople = packed record
     FirstName: RawUtf8;
@@ -35,8 +35,14 @@ type
     Sex: TSex;
     Birthday: TDateTime;
     Cat: TCat;
+    CatNested: packed record
+        Name: RawUtf8;
+        Sex: TSex;
+        Birthday: TDateTime;
+      end;
     Cat3: TCat3Array;
     Cats: TCatDynArray;
+    CatsNested: array of TCat;
   end;
 
   ICalculator = interface(IInvokable)
@@ -57,7 +63,10 @@ type
 {$ifdef FPC}
 const
   __TCat = 'Name RawUtf8 Sex TSex Birthday TDateTime';
-  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat Cat3 TCat3Array Cats TCatDynArray';
+//  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat Cat3 TCat3Array Cats TCatDynArray';
+  __TPeople = 'FirstName,LastName RawUtf8 Sex TSex Birthday TDateTime Cat TCat '+
+    'CatNested record Name RawUtf8 Sex TSex Birthday TDateTime end '+
+    'Cat3 TCat3Array Cats TCatDynArray CatsNested array of TCat';
 {$endif}
 
 implementation

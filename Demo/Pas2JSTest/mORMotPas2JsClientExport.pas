@@ -1,6 +1,6 @@
 /// remote access to a mORMot server using SmartMobileStudio
 // - retrieved from http://localhost:888/root/wrapper/Pas2JS-mORMotPas2JsClient/mORMotPas2JsClient.pas
-// at 2024-03-15 22:37:46 using "Pas2JS-mORMotPas2JsClient.pas.mustache" template
+// at 2024-03-17 14:10:41 using "Pas2JS-mORMotPas2JsClient.pas.mustache" template
 unit mORMotPas2JsClient;
 
 {
@@ -45,16 +45,11 @@ type // define some record types, used as properties below
     Birthday: TDateTime;
   end;
 
-  T000000000166f960 = record
+  00000000001edd10 = record
       Name: RawUtf8;
       Sex: TSex;
       Birthday: TDateTime;
   end;
-
-type // define some dynamic array types, used as properties below
-  TCat3Array = array[0..2] of TCat;
-  TCatDynArray = array of TCat;
-  TCat10 = array of TCat;
 
   TPeople = record
     FirstName: RawUtf8;
@@ -62,13 +57,16 @@ type // define some dynamic array types, used as properties below
     Sex: TSex;
     Birthday: TDateTime;
     Cat: TCat;
-    CatNested: T000000000166f960;
+    CatNested: 00000000001edd10;
     Cat3: TCat3Array;
     Cats: TCatDynArray;
-    CatsNested: TCat10;
+    CatsNested: [TCat10];
   end;
 
-
+type // define some dynamic array types, used as properties below
+  TCat3Array = array of TCat;
+  TCatDynArray = array of TCat;
+  [TCat10] = array of TCat;
 
 type
 
@@ -163,19 +161,20 @@ function Variant2TSex(const _variant: JSValue): TSex;
 function TSexToText(const value: TSex): string;
 function Variant2TCat(const Value: JSValue): TCat;
 function TCat2Variant(const Value: TCat): JSValue;
-function Variant2T000000000166f960(const Value: JSValue): T000000000166f960;
-function T000000000166f9602Variant(const Value: T000000000166f960): JSValue;
+function Variant200000000001edd10(const Value: JSValue): 00000000001edd10;
+function 00000000001edd102Variant(const Value: 00000000001edd10): JSValue;
 function Variant2TPeople(const Value: JSValue): TPeople;
 function TPeople2Variant(const Value: TPeople): JSValue;
 function Variant2TCat3Array(const _variant: JSValue): TCat3Array;
 function TCat3Array2Variant(const _array: TCat3Array): JSValue;
 function Variant2TCatDynArray(const _variant: JSValue): TCatDynArray;
 function TCatDynArray2Variant(const _array: TCatDynArray): JSValue;
-function Variant2TCat10(const _variant: JSValue): TCat10;
-function TCat102Variant(const _array: TCat10): JSValue;
+function Variant2[TCat10](const _variant: JSValue): [TCat10];
+function [TCat10]2Variant(const _array: [TCat10]): JSValue;
 
 
 implementation
+
 
 { Some helpers for enumerates types }
 
@@ -188,6 +187,7 @@ function TSexToText(const value: TSex): string;
 begin
   Result := toString(value);
 end;
+
 
 { Some helpers for record types:
   due to potential obfuscation of generated JavaScript, we can't assume
@@ -211,14 +211,14 @@ begin
   Result := rec;
 end;
 
-function Variant2T000000000166f960(const Value: JSValue): T000000000166f960;
+function Variant200000000001edd10(const Value: JSValue): 00000000001edd10;
 begin
   Result.Name := toRawUtf8(TJSObject(Value)['Name']);
   Result.Sex := Variant2TSex(TJSObject(Value)['Sex']);
   Result.Birthday := Iso8601ToDateTime(TJSObject(Value)['Birthday']);
 end;
 
-function T000000000166f9602Variant(const Value: T000000000166f960): JSValue;
+function 00000000001edd102Variant(const Value: 00000000001edd10): JSValue;
 var
   rec: TJSObject;
 begin
@@ -236,10 +236,10 @@ begin
   Result.Sex := Variant2TSex(TJSObject(Value)['Sex']);
   Result.Birthday := Iso8601ToDateTime(TJSObject(Value)['Birthday']);
   Result.Cat := Variant2TCat(TJSObject(Value)['Cat']);
-  Result.CatNested := Variant2T000000000166f960(TJSObject(Value)['CatNested']);
+  Result.CatNested := Variant200000000001edd10(TJSObject(Value)['CatNested']);
   Result.Cat3 := Variant2TCat3Array(TJSObject(Value)['Cat3']);
   Result.Cats := Variant2TCatDynArray(TJSObject(Value)['Cats']);
-  Result.CatsNested := Variant2TCat10(TJSObject(Value)['CatsNested']);
+  Result.CatsNested := Variant2[TCat10](TJSObject(Value)['CatsNested']);
 end;
 
 function TPeople2Variant(const Value: TPeople): JSValue;
@@ -252,12 +252,13 @@ begin
   rec['Sex'] := ord(Value.Sex);
   rec['Birthday'] := DateTimeToIso8601(Value.Birthday);
   rec['Cat'] := TCat2Variant(Value.Cat);
-  rec['CatNested'] := T000000000166f9602Variant(Value.CatNested);
+  rec['CatNested'] := 00000000001edd102Variant(Value.CatNested);
   rec['Cat3'] := TCat3Array2Variant(Value.Cat3);
   rec['Cats'] := TCatDynArray2Variant(Value.Cats);
-  rec['CatsNested'] := TCat102Variant(Value.CatsNested);
+  rec['CatsNested'] := [TCat10]2Variant(Value.CatsNested);
   Result := rec;
 end;
+
 
 { Some helpers for dynamic array types }
 
@@ -308,7 +309,7 @@ begin
     TJSArray(Result).push(TCat2Variant(_array[i]));
 end;
 
-function Variant2TCat10(const _variant: JSValue): TCat10;
+function Variant2[TCat10](const _variant: JSValue): [TCat10];
 var
   tmp: TCat;
   i: Integer;
@@ -323,7 +324,7 @@ begin
   end;
 end;
 
-function TCat102Variant(const _array: TCat10): JSValue;
+function [TCat10]2Variant(const _array: [TCat10]): JSValue;
 var
   i: Integer;
 begin
@@ -331,6 +332,7 @@ begin
   for i := 0 to High(_array) do
     TJSArray(Result).push(TCat2Variant(_array[i]));
 end;
+
 
 
 

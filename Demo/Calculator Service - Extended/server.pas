@@ -6,6 +6,7 @@ interface
 {$I mormot.defines.inc}
 uses
   SysUtils,
+  DateUtils,
   mormot.core.base,
   mormot.core.data,
   mormot.core.json,
@@ -141,14 +142,43 @@ end;
 
 function TCalculatorService.GetPeople(aId: integer;
   var aPeople: TPeople): Boolean;
+var
+  i: integer;
+  c: TCat;
 begin
-  aPeople.FirstName:='Mark';
-  aPeople.LastName:='Smith';
-  aPeople.Birthday:=Now;
-  aPeople.Sex:=cMale;
-  SetLength(aPeople.Cats, 2);
-  aPeople.Cats[0].Name:='Cat1';
-  aPeople.Cats[1].Name:='Cat2';
+  with aPeople do
+  begin
+    FirstName:='Mark';
+    LastName:='Smith';
+    Birthday:=Now;
+    Sex:=cMale;
+    Cat.Name:='OneCat';
+    Cat.Birthday:=IncYear(Date, -1);
+    Cat.Sex:=cMale;
+    CatNested.Name:='NestedOne';
+    CatNested.Birthday:=IncYear(Date, -3);
+    CatNested.Sex:=cFemale;
+    for i:=Low(Cat3) to High(Cat3) do
+    begin
+      Cat3[i].Name:='Static '+IntToStr(i+1);
+      Cat3[i].Birthday:=IncYear(Date, -i);
+      Cat3[i].Sex:=TSex(i mod 2);
+    end;
+    SetLength(Cats, 2);
+    for i:=Low(Cats) to High(Cats) do
+    begin
+      Cats[i].Name:='Dynamic '+IntToStr(i+1);
+      Cats[i].Birthday:=IncYear(Date, -i*2);
+      Cats[i].Sex:=TSex(i mod 2);
+    end;
+    SetLength(CatsNested, 3);
+    for i:=Low(CatsNested) to High(CatsNested) do
+    begin
+      CatsNested[i].Name:='Nested Dyn'+IntToStr(i+1);
+      CatsNested[i].Birthday:=IncYear(Date, -i*2);
+      CatsNested[i].Sex:=TSex(i mod 2);
+    end;
+  end;
   Result := True;
 end;
 

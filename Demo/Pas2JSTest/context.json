@@ -1,0 +1,1338 @@
+{
+	"time": "2024-03-17 14:10:56",
+	"year": 2024,
+	"mORMotVersion": "2.2.6792",
+	"Executable": null,
+	"exeInfo": "CalculatorInterfaceBasedServer.exe  (2024-03-16 12:50:40)",
+	"exeName": "CalculatorInterfaceBasedServer",
+	"hasorm": true,
+	"orm": 
+	[
+		{
+			"tableName": "AuthGroup",
+			"className": "TAuthGroup",
+			"classParent": "TOrm",
+			"fields": 
+			[
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "UTF8String",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"index": 1,
+					"name": "Ident",
+					"sql": 2,
+					"sqlName": "oftUtf8Text",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 1,
+					"unique": true,
+					"width": 50,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wInteger",
+					"typeSource": "Integer",
+					"typeDelphi": "Integer",
+					"typePascal": "Integer",
+					"typeCS": "integer",
+					"typeJava": "int",
+					"typeTS": "number",
+					"typeSwagger": {
+						"type": "integer"
+					},
+					"index": 2,
+					"name": "SessionTimeout",
+					"sql": 5,
+					"sqlName": "oftInteger",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 0,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "UTF8String",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"index": 3,
+					"name": "AccessRights",
+					"sql": 2,
+					"sqlName": "oftUtf8Text",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 0,
+					"width": 1600,
+					"comma": null
+				}
+			],
+			"isInMormotPas": true,
+			"unitName": null,
+			"comma": ","
+		},
+		{
+			"tableName": "AuthUser",
+			"className": "TAuthUser",
+			"classParent": "TOrm",
+			"fields": 
+			[
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "UTF8String",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"index": 1,
+					"name": "LogonName",
+					"sql": 2,
+					"sqlName": "oftUtf8Text",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 1,
+					"unique": true,
+					"width": 20,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "UTF8String",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"index": 2,
+					"name": "DisplayName",
+					"sql": 2,
+					"sqlName": "oftUtf8Text",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 0,
+					"width": 50,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "UTF8String",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"index": 3,
+					"name": "PasswordHashHexa",
+					"sql": 2,
+					"sqlName": "oftUtf8Text",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 0,
+					"width": 64,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wORM",
+					"typeSource": "TAuthGroup",
+					"typeDelphi": "TAuthGroup",
+					"typePascal": "TID",
+					"typeCS": "TID",
+					"typeJava": "TID",
+					"typeTS": "TAuthGroup",
+					"typeSwagger": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"unitName": "mormot.rest.core",
+					"isSQLRecord": true,
+					"isOrm": true,
+					"index": 4,
+					"name": "GroupRights",
+					"sql": 6,
+					"sqlName": "oftID",
+					"typeKind": 0,
+					"typeKindName": "oftUnspecified",
+					"attr": 0,
+					"comma": ","
+				},
+				{
+					"typeWrapper": "wBlob",
+					"typeSource": "RawBlob",
+					"typeDelphi": "RawBlob",
+					"typePascal": "RawBlob",
+					"typeCS": "byte[]",
+					"typeJava": "byte[]",
+					"typeTS": "mORMot.RawBlob",
+					"typeSwagger": {
+						"type": "string",
+						"format": "binary"
+					},
+					"isBlob": true,
+					"toVariant": "BlobToVariant",
+					"fromVariant": "VariantToBlob",
+					"index": 5,
+					"name": "Data",
+					"sql": 16,
+					"sqlName": "oftBlob",
+					"typeKind": 3,
+					"typeKindName": "oftBlob",
+					"attr": 0,
+					"comma": null
+				}
+			],
+			"isInMormotPas": true,
+			"unitName": null,
+			"comma": null
+		}
+	],
+	"soa": {
+		"enabled": true,
+		"services": 
+		[
+			{
+				"uri": "Calculator",
+				"interfaceUri": "Calculator",
+				"interfaceMangledUri": "7chgmrLOCU6H1EoW9Jbl_g",
+				"interfaceName": "ICalculator",
+				"GUID": "{9A60C8ED-CEB2-4E09-87D4-4A16F496E5FE}",
+				"contractExpected": "A788874160C720E1",
+				"instanceCreation": 1,
+				"instanceCreationName": "Shared",
+				"methods": 
+				[
+					{
+						"methodName": "Add",
+						"methodIndex": 3,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "n1",
+								"argType": "Integer",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "n2",
+								"argType": "Integer",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "Result",
+								"argType": "Integer",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.Add",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "ArrayValue",
+						"methodIndex": 4,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "arrJSON",
+								"argType": "UTF8String",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "ix",
+								"argType": "Integer",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wVariant",
+								"typeSource": "Variant",
+								"typeDelphi": "Variant",
+								"typePascal": "Variant",
+								"typeCS": "dynamic",
+								"typeJava": "Object",
+								"typeTS": "any",
+								"typeSwagger": "Variant",
+								"isVariant": true,
+								"argName": "Result",
+								"argType": "Variant",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.ArrayValue",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "CountArray",
+						"methodIndex": 5,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "jsn",
+								"argType": "UTF8String",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "Result",
+								"argType": "Integer",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.CountArray",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "SumArray",
+						"methodIndex": 6,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "jsn",
+								"argType": "UTF8String",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wDouble",
+								"typeSource": "Double",
+								"typeDelphi": "Double",
+								"typePascal": "Double",
+								"typeCS": "double",
+								"typeJava": "double",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "number",
+									"format": "double"
+								},
+								"argName": "Result",
+								"argType": "Double",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.SumArray",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "FullName",
+						"methodIndex": 7,
+						"verb": "procedure",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "aFirstName",
+								"argType": "UTF8String",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "aLastName",
+								"argType": "UTF8String",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "UTF8String",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"argName": "aFullName",
+								"argType": "UTF8String",
+								"arg.dir": 1,
+								"dirName": "var",
+								"dirNoOut": "var",
+								"dirInput": true,
+								"dirOutput": true,
+								"commaArg": "; ",
+								"commaInSingle": ",",
+								"commaOut": "; ",
+								"indexOutResult": "0]",
+								"commaOutResult": "; "
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "aSize",
+								"argType": "Integer",
+								"arg.dir": 1,
+								"dirName": "var",
+								"dirNoOut": "var",
+								"dirInput": true,
+								"dirOutput": true,
+								"isArgLast": true,
+								"indexOutResult": "1]"
+							}
+						],
+						"argsOutputCount": 2,
+						"methodDescription": "Calculator.FullName",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"hasOutNotResultParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "CatIsMale",
+						"methodIndex": 8,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TCat",
+								"typeDelphi": "TCat",
+								"typePascal": "TCat",
+								"typeCS": "TCat",
+								"typeJava": "TCat",
+								"typeTS": "TCat",
+								"typeSwagger": "TCat",
+								"isRecord": true,
+								"toVariant": "TCat2Variant",
+								"fromVariant": "Variant2TCat",
+								"argName": "aCat",
+								"argType": "TCat",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wBoolean",
+								"typeSource": "Boolean",
+								"typeDelphi": "Boolean",
+								"typePascal": "Boolean",
+								"typeCS": "bool",
+								"typeJava": "boolean",
+								"typeTS": "boolean",
+								"typeSwagger": {
+									"type": "boolean"
+								},
+								"argName": "Result",
+								"argType": "Boolean",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.CatIsMale",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "GetCat",
+						"methodIndex": 9,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TCat",
+								"typeDelphi": "TCat",
+								"typePascal": "TCat",
+								"typeCS": "TCat",
+								"typeJava": "TCat",
+								"typeTS": "TCat",
+								"typeSwagger": "TCat",
+								"isRecord": true,
+								"toVariant": "TCat2Variant",
+								"fromVariant": "Variant2TCat",
+								"argName": "Result",
+								"argType": "TCat",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.GetCat",
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "GetPeople",
+						"methodIndex": 10,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "aId",
+								"argType": "Integer",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TPeople",
+								"typeDelphi": "TPeople",
+								"typePascal": "TPeople",
+								"typeCS": "TPeople",
+								"typeJava": "TPeople",
+								"typeTS": "TPeople",
+								"typeSwagger": "TPeople",
+								"isRecord": true,
+								"toVariant": "TPeople2Variant",
+								"fromVariant": "Variant2TPeople",
+								"argName": "aPeople",
+								"argType": "TPeople",
+								"arg.dir": 1,
+								"dirName": "var",
+								"dirNoOut": "var",
+								"dirInput": true,
+								"dirOutput": true,
+								"indexOutResult": "0]",
+								"commaOutResult": "; "
+							},
+							{
+								"typeWrapper": "wBoolean",
+								"typeSource": "Boolean",
+								"typeDelphi": "Boolean",
+								"typePascal": "Boolean",
+								"typeCS": "bool",
+								"typeJava": "boolean",
+								"typeTS": "boolean",
+								"typeSwagger": {
+									"type": "boolean"
+								},
+								"argName": "Result",
+								"argType": "Boolean",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "1]"
+							}
+						],
+						"argsOutputCount": 2,
+						"methodDescription": "Calculator.GetPeople",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"hasOutNotResultParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "AddPeople",
+						"methodIndex": 11,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TPeople",
+								"typeDelphi": "TPeople",
+								"typePascal": "TPeople",
+								"typeCS": "TPeople",
+								"typeJava": "TPeople",
+								"typeTS": "TPeople",
+								"typeSwagger": "TPeople",
+								"isRecord": true,
+								"toVariant": "TPeople2Variant",
+								"fromVariant": "Variant2TPeople",
+								"argName": "aPeople",
+								"argType": "TPeople",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true
+							},
+							{
+								"typeWrapper": "wInteger",
+								"typeSource": "Integer",
+								"typeDelphi": "Integer",
+								"typePascal": "Integer",
+								"typeCS": "integer",
+								"typeJava": "int",
+								"typeTS": "number",
+								"typeSwagger": {
+									"type": "integer"
+								},
+								"argName": "Result",
+								"argType": "Integer",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "0]"
+							}
+						],
+						"argsOutputCount": 1,
+						"methodDescription": "Calculator.AddPeople",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"isInherited": true
+					},
+					{
+						"methodName": "AddCat2People",
+						"methodIndex": 12,
+						"verb": "function",
+						"args": 
+						[
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TCat",
+								"typeDelphi": "TCat",
+								"typePascal": "TCat",
+								"typeCS": "TCat",
+								"typeJava": "TCat",
+								"typeTS": "TCat",
+								"typeSwagger": "TCat",
+								"isRecord": true,
+								"toVariant": "TCat2Variant",
+								"fromVariant": "Variant2TCat",
+								"argName": "aCat",
+								"argType": "TCat",
+								"arg.dir": 0,
+								"dirName": "const",
+								"dirNoOut": "const",
+								"dirInput": true,
+								"commaArg": "; ",
+								"commaInSingle": ","
+							},
+							{
+								"typeWrapper": "wRecord",
+								"typeSource": "TPeople",
+								"typeDelphi": "TPeople",
+								"typePascal": "TPeople",
+								"typeCS": "TPeople",
+								"typeJava": "TPeople",
+								"typeTS": "TPeople",
+								"typeSwagger": "TPeople",
+								"isRecord": true,
+								"toVariant": "TPeople2Variant",
+								"fromVariant": "Variant2TPeople",
+								"argName": "aPeople",
+								"argType": "TPeople",
+								"arg.dir": 1,
+								"dirName": "var",
+								"dirNoOut": "var",
+								"dirInput": true,
+								"dirOutput": true,
+								"indexOutResult": "0]",
+								"commaOutResult": "; "
+							},
+							{
+								"typeWrapper": "wBoolean",
+								"typeSource": "Boolean",
+								"typeDelphi": "Boolean",
+								"typePascal": "Boolean",
+								"typeCS": "bool",
+								"typeJava": "boolean",
+								"typeTS": "boolean",
+								"typeSwagger": {
+									"type": "boolean"
+								},
+								"argName": "Result",
+								"argType": "Boolean",
+								"arg.dir": 3,
+								"dirName": "result",
+								"dirNoOut": "result",
+								"dirOutput": true,
+								"dirResult": true,
+								"isArgLast": true,
+								"indexOutResult": "1]"
+							}
+						],
+						"argsOutputCount": 2,
+						"methodDescription": "Calculator.AddCat2People",
+						"hasInParams": true,
+						"hasOutParams": true,
+						"hasOutNotResultParams": true,
+						"isInherited": true
+					}
+				],
+				"bypassAuthentication": false,
+				"resultAsJsonObject": false,
+				"resultAsJsonObjectWithoutResult": false,
+				"resultAsXMLObject": false,
+				"timeoutSec": 0,
+				"serviceDescription": null
+			}
+		],
+		"expectMangledUri": false
+	},
+	"root": "root",
+	"records": 
+	[
+		{
+			"name": "TCat",
+			"fields": 
+			[
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "RawUtf8",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"propName": "Name",
+					"fullPropName": "Name",
+					"isSimple": true
+				},
+				{
+					"typeWrapper": "wEnum",
+					"typeSource": "TSex",
+					"typeDelphi": "TSex",
+					"typePascal": "TSex",
+					"typeCS": "TSex",
+					"typeJava": "TSex",
+					"typeTS": "TSex",
+					"typeSwagger": "TSex",
+					"isEnum": true,
+					"toVariant": "ord",
+					"fromVariant": "Variant2TSex",
+					"propName": "Sex",
+					"fullPropName": "Sex",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wDateTime",
+					"typeSource": "TDateTime",
+					"typeDelphi": "TDateTime",
+					"typePascal": "TDateTime",
+					"typeCS": "double",
+					"typeJava": "double",
+					"typeTS": "mORMot.TDateTime",
+					"typeSwagger": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isDateTime": true,
+					"toVariant": "DateTimeToIso8601",
+					"fromVariant": "Iso8601ToDateTime",
+					"propName": "Birthday",
+					"fullPropName": "Birthday",
+					"isSimple": null
+				}
+			]
+		},
+		{
+			"name": "00000000001edd10",
+			"fields": 
+			[
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "RawUtf8",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"propName": "Name",
+					"fullPropName": "CatNested.Name",
+					"nestedIdentation": "  ",
+					"isSimple": true
+				},
+				{
+					"typeWrapper": "wEnum",
+					"typeSource": "TSex",
+					"typeDelphi": "TSex",
+					"typePascal": "TSex",
+					"typeCS": "TSex",
+					"typeJava": "TSex",
+					"typeTS": "TSex",
+					"typeSwagger": "TSex",
+					"isEnum": true,
+					"toVariant": "ord",
+					"fromVariant": "Variant2TSex",
+					"propName": "Sex",
+					"fullPropName": "CatNested.Sex",
+					"nestedIdentation": "  ",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wDateTime",
+					"typeSource": "TDateTime",
+					"typeDelphi": "TDateTime",
+					"typePascal": "TDateTime",
+					"typeCS": "double",
+					"typeJava": "double",
+					"typeTS": "mORMot.TDateTime",
+					"typeSwagger": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isDateTime": true,
+					"toVariant": "DateTimeToIso8601",
+					"fromVariant": "Iso8601ToDateTime",
+					"propName": "Birthday",
+					"fullPropName": "CatNested.Birthday",
+					"nestedIdentation": "  ",
+					"isSimple": null
+				}
+			]
+		},
+		{
+			"name": "TPeople",
+			"fields": 
+			[
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "RawUtf8",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"propName": "FirstName",
+					"fullPropName": "FirstName",
+					"isSimple": true
+				},
+				{
+					"typeWrapper": "wRawUtf8",
+					"typeSource": "RawUtf8",
+					"typeDelphi": "RawUtf8",
+					"typePascal": "String",
+					"typeCS": "string",
+					"typeJava": "String",
+					"typeTS": "string",
+					"typeSwagger": {
+						"type": "string"
+					},
+					"propName": "LastName",
+					"fullPropName": "LastName",
+					"isSimple": true
+				},
+				{
+					"typeWrapper": "wEnum",
+					"typeSource": "TSex",
+					"typeDelphi": "TSex",
+					"typePascal": "TSex",
+					"typeCS": "TSex",
+					"typeJava": "TSex",
+					"typeTS": "TSex",
+					"typeSwagger": "TSex",
+					"isEnum": true,
+					"toVariant": "ord",
+					"fromVariant": "Variant2TSex",
+					"propName": "Sex",
+					"fullPropName": "Sex",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wDateTime",
+					"typeSource": "TDateTime",
+					"typeDelphi": "TDateTime",
+					"typePascal": "TDateTime",
+					"typeCS": "double",
+					"typeJava": "double",
+					"typeTS": "mORMot.TDateTime",
+					"typeSwagger": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isDateTime": true,
+					"toVariant": "DateTimeToIso8601",
+					"fromVariant": "Iso8601ToDateTime",
+					"propName": "Birthday",
+					"fullPropName": "Birthday",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wRecord",
+					"typeSource": "TCat",
+					"typeDelphi": "TCat",
+					"typePascal": "TCat",
+					"typeCS": "TCat",
+					"typeJava": "TCat",
+					"typeTS": "TCat",
+					"typeSwagger": "TCat",
+					"isRecord": true,
+					"toVariant": "TCat2Variant",
+					"fromVariant": "Variant2TCat",
+					"propName": "Cat",
+					"fullPropName": "Cat",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wRecord",
+					"typeSource": "00000000001edd10",
+					"typeDelphi": "00000000001edd10",
+					"typePascal": "00000000001edd10",
+					"typeCS": "00000000001edd10",
+					"typeJava": "00000000001edd10",
+					"typeTS": "00000000001edd10",
+					"typeSwagger": "00000000001edd10",
+					"isRecord": true,
+					"toVariant": "00000000001edd102Variant",
+					"fromVariant": "Variant200000000001edd10",
+					"propName": "CatNested",
+					"fullPropName": "CatNested",
+					"isSimple": null,
+					"nestedRecord": {
+						"nestedRecord": null,
+						"fields": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "RawUtf8",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"propName": "Name",
+								"fullPropName": "CatNested.Name",
+								"nestedIdentation": "  ",
+								"isSimple": true
+							},
+							{
+								"typeWrapper": "wEnum",
+								"typeSource": "TSex",
+								"typeDelphi": "TSex",
+								"typePascal": "TSex",
+								"typeCS": "TSex",
+								"typeJava": "TSex",
+								"typeTS": "TSex",
+								"typeSwagger": "TSex",
+								"isEnum": true,
+								"toVariant": "ord",
+								"fromVariant": "Variant2TSex",
+								"propName": "Sex",
+								"fullPropName": "CatNested.Sex",
+								"nestedIdentation": "  ",
+								"isSimple": null
+							},
+							{
+								"typeWrapper": "wDateTime",
+								"typeSource": "TDateTime",
+								"typeDelphi": "TDateTime",
+								"typePascal": "TDateTime",
+								"typeCS": "double",
+								"typeJava": "double",
+								"typeTS": "mORMot.TDateTime",
+								"typeSwagger": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"isDateTime": true,
+								"toVariant": "DateTimeToIso8601",
+								"fromVariant": "Iso8601ToDateTime",
+								"propName": "Birthday",
+								"fullPropName": "CatNested.Birthday",
+								"nestedIdentation": "  ",
+								"isSimple": null
+							}
+						]
+					}
+				},
+				{
+					"typeWrapper": "wArray",
+					"typeSource": "TCat3Array",
+					"typeDelphi": "TCat3Array",
+					"typePascal": "TCat3Array",
+					"typeCS": "TCat3Array",
+					"typeJava": "TCat3Array",
+					"typeTS": "TCat3Array",
+					"typeSwagger": "TCat3Array",
+					"isArray": true,
+					"toVariant": "TCat3Array2Variant",
+					"fromVariant": "Variant2TCat3Array",
+					"propName": "Cat3",
+					"fullPropName": "Cat3",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wArray",
+					"typeSource": "TCatDynArray",
+					"typeDelphi": "TCatDynArray",
+					"typePascal": "TCatDynArray",
+					"typeCS": "TCatDynArray",
+					"typeJava": "TCatDynArray",
+					"typeTS": "TCatDynArray",
+					"typeSwagger": "TCatDynArray",
+					"isArray": true,
+					"toVariant": "TCatDynArray2Variant",
+					"fromVariant": "Variant2TCatDynArray",
+					"propName": "Cats",
+					"fullPropName": "Cats",
+					"isSimple": null
+				},
+				{
+					"typeWrapper": "wArray",
+					"typeSource": "[TCat10]",
+					"typeDelphi": "[TCat10]",
+					"typePascal": "[TCat10]",
+					"typeCS": "[TCat10]",
+					"typeJava": "[TCat10]",
+					"typeTS": "[TCat10]",
+					"typeSwagger": "[TCat10]",
+					"isArray": true,
+					"toVariant": "[TCat10]2Variant",
+					"fromVariant": "Variant2[TCat10]",
+					"propName": "CatsNested",
+					"fullPropName": "CatsNested",
+					"isSimple": null,
+					"nestedRecordArray": {
+						"nestedRecordArray": null,
+						"fields": 
+						[
+							{
+								"typeWrapper": "wRawUtf8",
+								"typeSource": "RawUtf8",
+								"typeDelphi": "RawUtf8",
+								"typePascal": "String",
+								"typeCS": "string",
+								"typeJava": "String",
+								"typeTS": "string",
+								"typeSwagger": {
+									"type": "string"
+								},
+								"propName": "Name",
+								"fullPropName": "CatsNested.Name",
+								"nestedIdentation": "  ",
+								"isSimple": true
+							},
+							{
+								"typeWrapper": "wEnum",
+								"typeSource": "TSex",
+								"typeDelphi": "TSex",
+								"typePascal": "TSex",
+								"typeCS": "TSex",
+								"typeJava": "TSex",
+								"typeTS": "TSex",
+								"typeSwagger": "TSex",
+								"isEnum": true,
+								"toVariant": "ord",
+								"fromVariant": "Variant2TSex",
+								"propName": "Sex",
+								"fullPropName": "CatsNested.Sex",
+								"nestedIdentation": "  ",
+								"isSimple": null
+							},
+							{
+								"typeWrapper": "wDateTime",
+								"typeSource": "TDateTime",
+								"typeDelphi": "TDateTime",
+								"typePascal": "TDateTime",
+								"typeCS": "double",
+								"typeJava": "double",
+								"typeTS": "mORMot.TDateTime",
+								"typeSwagger": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"isDateTime": true,
+								"toVariant": "DateTimeToIso8601",
+								"fromVariant": "Iso8601ToDateTime",
+								"propName": "Birthday",
+								"fullPropName": "CatsNested.Birthday",
+								"nestedIdentation": "  ",
+								"isSimple": null
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"withRecords": true,
+	"withHelpers": true,
+	"enumerates": 
+	[
+		{
+			"name": "TSex",
+			"values": 
+			[
+				"cMale",
+				"cFemale"
+			]
+		}
+	],
+	"withEnumerates": true,
+	"withHelpers": true,
+	"arrays": 
+	[
+		{
+			"typeWrapper": "wRecord",
+			"typeSource": "TCat",
+			"typeDelphi": "TCat",
+			"typePascal": "TCat",
+			"typeCS": "TCat",
+			"typeJava": "TCat",
+			"typeTS": "TCat",
+			"typeSwagger": "TCat",
+			"isRecord": true,
+			"toVariant": "TCat2Variant",
+			"fromVariant": "Variant2TCat",
+			"staticMaxIndex": 2,
+			"name": "TCat3Array"
+		},
+		{
+			"typeWrapper": "wRecord",
+			"typeSource": "TCat",
+			"typeDelphi": "TCat",
+			"typePascal": "TCat",
+			"typeCS": "TCat",
+			"typeJava": "TCat",
+			"typeTS": "TCat",
+			"typeSwagger": "TCat",
+			"isRecord": true,
+			"toVariant": "TCat2Variant",
+			"fromVariant": "Variant2TCat",
+			"name": "TCatDynArray"
+		},
+		{
+			"typeWrapper": "wRecord",
+			"typeSource": "TCat",
+			"typeDelphi": "TCat",
+			"typePascal": "TCat",
+			"typeCS": "TCat",
+			"typeJava": "TCat",
+			"typeTS": "TCat",
+			"typeSwagger": "TCat",
+			"isRecord": true,
+			"toVariant": "TCat2Variant",
+			"fromVariant": "Variant2TCat",
+			"name": "[TCat10]"
+		}
+	],
+	"withArrays": true,
+	"withHelpers": true,
+	"units": 
+	[
+		"mormot.rest.core",
+		"data"
+	],
+	"authClass": "TRestServerAuthenticationDefault",
+	"uri": "root/wrapper/context",
+	"protocol": "http",
+	"host": "localhost:888",
+	"port": 888
+}

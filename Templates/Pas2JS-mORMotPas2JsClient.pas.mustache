@@ -42,7 +42,7 @@ uses
 {{! recursive partials used to write records type definition}}
 {{<writerec}}record
 {{#fields}}
-{{nestedIdentation}}    {{propName}}: {{#typeDelphi}}{{typeDelphi}};{{/typeDelphi}}{{#nestedRecord}}{{>writerec}}{{nestedIdentation}}    end;{{/nestedRecord}}{{#nestedSimpleArray}}array of {{typeDelphi}};{{/nestedSimpleArray}}{{#nestedRecordArray}}array of {{>writerec}}{{nestedIdentation}}    end;{{/nestedRecordArray}}
+{{nestedIdentation}}    {{propName}}: {{#typeDelphi}}{{typeDelphi}};{{/typeDelphi}}{{#nestedSimpleArray}}array of {{typeDelphi}};{{/nestedSimpleArray}}
 {{/fields}}{{/writerec}}
 {{#withEnumerates}}
 type // define some enumeration types, used below
@@ -79,7 +79,7 @@ type
       onSuccess: {{>methodAsynchOnSuccess}}; onError: TRestEvent);{{/methodAsynch}}
 {{<methodSynch}}_{{methodName}}({{#args}}{{^dirResult}}{{dirName}} {{argName}}: {{typeDelphi}}{{commaArg}}{{/dirResult}}{{/args}}){{#args}}{{#dirResult}}: {{#isVariant}}JSValue{{/isVariant}}{{^isVariant}}{{typeDelphi}}{{/isVariant}}{{/dirResult}}{{/args}};{{/methodSynch}}
 {{#soa}}{{#services}}{{#methods}}
-  {{>methodAsynchOnSuccess}} = reference to procedure({{#args}}{{#dirOutput}}{{argName}}: {{#isVariant}}JSValue{{/isVariant}}{{^isVariant}}{{typeDelphi}}{{/isVariant}}{{commaArg}}{{/dirOutput}}{{/args}});{{/methods}}{{/services}}{{/soa}}
+  {{>methodAsynchOnSuccess}} = reference to procedure({{#args}}{{#dirOutput}}{{argName}}: {{#isVariant}}JSValue{{/isVariant}}{{^isVariant}}{{typeDelphi}}{{/isVariant}}{{commaOutResult}}{{/dirOutput}}{{/args}});{{/methods}}{{/services}}{{/soa}}
 {{#orm}}
 {{^isInMormotPas}}
   /// map "{{tableName}}" table
@@ -90,8 +90,8 @@ type
     {{/fields}}
     // those overridden methods will emulate the needed RTTI
     class function ComputeRTTI: TRTTIPropInfos; override;
-    procedure SetProperty(FieldIndex: integer; const Value: variant); override;
-    function GetProperty(FieldIndex: integer): variant; override;
+    procedure SetProperty(FieldIndex: Integer; const Value: variant); override;
+    function GetProperty(FieldIndex: Integer): variant; override;
   public
 {{#fields}}
 {{#isSQLRecord}}    // defined as {{name}}: {{typeDelphi}} on the server
@@ -144,7 +144,7 @@ function GetModel(aRoot: string=SERVER_ROOT): TOrmModel;
 // - request will be asynchronous, and trigger onSuccess or onError event
 procedure GetClient(const aServerAddress{{#authClass}}, aUserName, aPassword{{/authClass}}: string;
   onSuccess, onError: TRestEvent;
-  aServerPort: integer=SERVER_PORT; aServerRoot: string=SERVER_ROOT);
+  aServerPort: Integer=SERVER_PORT; aServerRoot: string=SERVER_ROOT);
 
 {{#withHelpers}}
 // publish some low-level helpers for variant conversion
@@ -158,46 +158,25 @@ function Variant2{{name}}(const Value: JSValue): {{name}};
 function {{name}}2Variant(const Value: {{name}}): JSValue;
 {{/records}}
 {{#arrays}}
-function Variant2{{name}}(const _variant: variant): {{name}};
-function {{name}}2Variant(const _array: {{name}}): variant;
+function Variant2{{name}}(const _variant: JSValue): {{name}};
+function {{name}}2Variant(const _array: {{name}}): JSValue;
 {{/arrays}}
 
 {{/withHelpers}}
 
 implementation
 {{<setrec}}{{#fields}}
-{{#isSimple}}  Result.{{fullPropName}} := {{#fromVariant}}{{fromVariant}}{{/fromVariant}}{{^fromVariant}}to{{typeDelphi}}{{/fromVariant}}(TJSObject(Value)['{{fullPropName}}']);
-{{/isSimple}}{{#nestedRecord}}{{>setrec}}{{/nestedRecord}}{{#fromVariant}}  Result.{{fullPropName}} := {{fromVariant}}(TJSObject(Value)['{{fullPropName}}']);
+{{#isSimple}}  Result.{{propName}} := {{#fromVariant}}{{fromVariant}}{{/fromVariant}}{{^fromVariant}}to{{typeDelphi}}{{/fromVariant}}(TJSObject(Value)['{{propName}}']);
+{{/isSimple}}{{#fromVariant}}  Result.{{propName}} := {{fromVariant}}(TJSObject(Value)['{{propName}}']);
 {{/fromVariant}}{{#nestedSimpleArray}}  if VariantType(Value.{{fullPropName}})=jvArray then
-    for var i := 0 to integer(Value.{{fullPropName}}.length)-1 do
+    for var i := 0 to Integer(Value.{{fullPropName}}.length)-1 do
       Result.{{fullPropName}}.Add({{typePascal}}(Value.{{fullPropName}}[i]));
-{{/nestedSimpleArray}}{{#nestedRecordArray}}  if VariantType(Value.{{fullPropName}})=jvArray then begin
-    var tmp: {{name}};
-    tmp.{{propName}}.SetLength(1);
-    for var n := 0 to integer(Value.{{fullPropName}}.length)-1 do begin
-      var source := Value.{{fullPropName}}[n];
-      var dest := tmp.{{propName}}[0];
-{{#fields}}
-      dest.{{propName}} := {{#fromVariant}}{{fromVariant}}({{/fromVariant}}source.{{propName}}{{#fromVariant}}){{/fromVariant}};
-{{/fields}}
-      result.{{fullPropName}}.Add(dest);
-    end;
-  end;
-{{/nestedRecordArray}}{{/fields}}{{/setrec}}
+{{/nestedSimpleArray}}{{/fields}}{{/setrec}}
 {{<getrec}}{{#fields}}
-{{#isSimple}}  rec['{{fullPropName}}'] := Value.{{fullPropName}};
-{{/isSimple}}{{#nestedRecord}}  result.{{fullPropName}} := new JObject;
-{{>getrec}}{{/nestedRecord}}{{#toVariant}}  rec['{{fullPropName}}'] := {{toVariant}}(Value.{{fullPropName}});
-{{/toVariant}}{{#nestedSimpleArray}}  result.{{fullPropName}} := variant(Value.{{fullPropName}});
-{{/nestedSimpleArray}}{{#nestedRecordArray}}  result.{{fullPropName}} := TVariant.CreateArray;
-  for var source in Value.{{fullPropName}} do begin
-    var dest: variant := new JObject;
-{{#fields}}
-    dest.{{propName}} := {{#toVariant}}{{toVariant}}({{/toVariant}}source.{{propName}}{{#toVariant}}){{/toVariant}};
-{{/fields}}
-    result.{{fullPropName}}.push(dest);
-  end;
-{{/nestedRecordArray}}{{/fields}}{{/getrec}}
+{{#isSimple}}  rec['{{propName}}'] := Value.{{propName}};
+{{/isSimple}}{{#toVariant}}  rec['{{propName}}'] := {{toVariant}}(Value.{{propName}});
+{{/toVariant}}{{#nestedSimpleArray}}  Result.{{propName}} := variant(Value.{{propName}});
+{{/nestedSimpleArray}}{{/fields}}{{/getrec}}
 {{#withEnumerates}}
 { Some helpers for enumerates types }
 
@@ -242,22 +221,28 @@ end;
 { Some helpers for dynamic array types }
 
 {{#arrays}}
-function Variant2{{name}}(const _variant: variant): {{name}};
-var tmp: {{typeSource}};
+function Variant2{{name}}(const _variant: JSValue): {{name}};
+var
+  tmp: {{typeSource}};
+  i: Integer;
 begin
-  if VariantType(_variant)=jvArray then
-    for var i := 0 to integer(_variant.Length)-1 do begin
-      tmp := {{#fromVariant}}{{fromVariant}}{{/fromVariant}}(_variant[i]);
-      result.Add(tmp);
+  if isArray(_variant) then
+  begin{{^staticMaxIndex}}
+    SetLength(Result, TJSArray(_variant).Length);{{/staticMaxIndex}}
+    for i := 0 to TJSArray(_variant).Length-1 do begin
+      tmp := {{#fromVariant}}{{fromVariant}}{{/fromVariant}}(TJSArray(_variant)[i]);
+      Result[i] := tmp;
     end;
+  end;
 end;
 
-function {{name}}2Variant(const _array: {{name}}): variant;
-var i: integer;
+function {{name}}2Variant(const _array: {{name}}): JSValue;
+var
+  i: Integer;
 begin
-  result := TVariant.CreateArray;
-  for i := 0 to high(_array) do
-    result.push({{#toVariant}}{{toVariant}}{{/toVariant}}(_array[i]));
+  Result := TJSArray.new;
+  for i := 0 to High(_array) do
+    TJSArray(Result).push({{#toVariant}}{{toVariant}}{{/toVariant}}(_array[i]));
 end;
 
 {{/arrays}}
@@ -270,12 +255,12 @@ end;
 
 class function {{className}}.ComputeRTTI: TRTTIPropInfos;
 begin
-  result := TRTTIPropInfos.Create(
+  Result := TRTTIPropInfos.Create(
     [{{#fields}}'{{name}}'{{comma}}{{/fields}}],
     [{{#fields}}{{typekindname}}{{comma}}{{/fields}}]);
 end;
 
-procedure {{className}}.SetProperty(FieldIndex: integer; const Value: variant);
+procedure {{className}}.SetProperty(FieldIndex: Integer; const Value: variant);
 begin
   case FieldIndex of
   0: fID := Value;
@@ -285,12 +270,12 @@ begin
   end;
 end;
 
-function {{className}}.GetProperty(FieldIndex: integer): variant;
+function {{className}}.GetProperty(FieldIndex: Integer): variant;
 begin
   case FieldIndex of
-  0: result := fID;
+  0: Result := fID;
   {{#fields}}
-  {{index}}: result := {{#toVariant}}{{toVariant}}({{/toVariant}}f{{name}}{{#toVariant}}){{/toVariant}};
+  {{index}}: Result := {{#toVariant}}{{toVariant}}({{/toVariant}}f{{name}}{{#toVariant}}){{/toVariant}};
   {{/fields}}
   end;
 end;
@@ -305,7 +290,7 @@ end;
 
 procedure GetClient(const aServerAddress{{#authClass}}, aUserName, aPassword{{/authClass}}: string;
   onSuccess, onError: TRestEvent;
-  aServerPort: integer; aServerRoot: string);
+  aServerPort: Integer; aServerRoot: string);
 var
   client: TRestClientHTTP;
 begin

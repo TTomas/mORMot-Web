@@ -4,6 +4,7 @@ program test;
 
 uses
   BrowserApp, JS, Classes, SysUtils, Web, Types,
+  DateUtils,
   Web.mORMot.Types,
   Web.mORMot.Rest,
   Web.mORMot.RestTypes,
@@ -27,6 +28,7 @@ type
     procedure TestSumArray;
     procedure TestFullName;
     procedure TestCat;
+    procedure TestPeople;
 
     procedure AddDivText(const aValue: string);
   protected
@@ -75,7 +77,8 @@ begin
 //  TestCountArray;
 //  TestSumArray;
 //  TestFullName;
-  TestCat;
+//  TestCat;
+  TestPeople;
 end;
 
 procedure TMyApplication.TestCountArray;
@@ -230,6 +233,27 @@ begin
 
   pCat := Calc._GetCat;
   AddDivText('Sync _GetCat: ' + TJSJSON.stringify(pCat));
+  AddDivText('Sync _GetCat: ' + TJSJSON.stringify(TCat2Variant(pCat)));
+end;
+
+procedure TMyApplication.TestPeople;
+var
+  p: TPeople;
+  c: TCat;
+begin
+  if Calc._GetPeople(123, p) then
+  begin
+    AddDivText('Sync _GetPeople Name: '+p.FirstName+' '+p.LastName);
+    c.Name:='NewCat';
+    c.Sex:=cFemale;
+    c.Birthday:=IncYear(Date, -4);
+    AddDivText('Birthday: '+FormatDateTime('dd.mm.yyyy', c.Birthday));
+    if Calc._AddCat2People(c, p) then
+    begin
+      AddDivText('Sync _AddCat2People: '+TJSJSON.stringify(p));
+      AddDivText('Birthday: '+DateToStr(p.Cats[2].Birthday));
+    end;
+  end;
 end;
 
 procedure TMyApplication.AddDivText(const aValue: string);
