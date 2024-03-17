@@ -72,12 +72,12 @@ end;
 
 procedure TMyApplication.TestAll;
 begin
-//  TestAdd;
-//  TestArrayValue;
-//  TestCountArray;
-//  TestSumArray;
-//  TestFullName;
-//  TestCat;
+  TestAdd;
+  TestArrayValue;
+  TestCountArray;
+  TestSumArray;
+  TestFullName;
+  TestCat;
   TestPeople;
 end;
 
