@@ -68,7 +68,7 @@ type // define some record types, used as properties below
 {{#withArrays}}
 type // define some dynamic array types, used as properties below
 {{#arrays}}
-  {{name}} = array of {{typeSource}};
+  {{name}} = array{{#staticMaxIndex}}[0..{{staticMaxIndex}}]{{/staticMaxIndex}} of {{typeSource}};
 {{/arrays}}
 
 {{/withArrays}}
