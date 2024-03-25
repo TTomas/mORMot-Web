@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>mORMmot Calculator Pas2JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+  <link rel="stylesheet" href="style.css">
+  <script src="mormotcalcpas2js.js"></script>
+</head>
+<body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong>mORMot Web Pas2JS Interface Demo</strong></li>
+      </ul>
+      <ul>
+        <li><a id="menu-calculator" href="#">Calculator</a></li>
+        <li><a id="menu-people" href="#">People</a></li>
+        <li><a id="menu-logout" href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <div>
+      <div id="view-calc" class="grid2">
+        <article>
+          <header>Add</header>
+          <fieldset role="group">
+            <label>X<input id="calc-add-x" name="X" placeholder="X" type="number" value="3"/></label>
+            <label>Y<input id="calc-add-y" name="Y" placeholder="Y" type="number" value="34"/></label>
+          </fieldset>
+          <footer class="grid">
+            <button id="calc-add-btnsync" class="secondary">Synch</button>
+            <button id="calc-add-btnasync">Asynch</button>
+            <div>Result: </div>
+            <div id="calc-add-res">123</div>
+          </footer>
+        </article>
+        <article>
+          <header>ArrayValue</header>
+          <fieldset role="group">
+            <label>Array<input id="calc-arrval-arr" name="Arr" placeholder="Arr" value="[2,54,&quot;45x&quot;,23,&quot;xyz&quot;]"/></label>
+            <label>Index<input id="calc-arrval-index" name="index" placeholder="index" type="number" value="3"/></label>
+          </fieldset>
+          <footer class="grid">
+            <button id="calc-arrval-btnsync" class="secondary">Synch</button>
+            <button id="calc-arrval-btnasync">Asynch</button>
+            <div>Result: </div>
+            <div id="calc-arrval-res"></div>
+          </footer>
+        </article>
+        <article>
+          <header>CountArray</header>
+          <fieldset role="group">
+            <label>Array<input id="calc-cntarr-arr" name="Arr" placeholder="Arr" value="[2,54,&quot;45x&quot;,23,&quot;xyz&quot;]"/></label>
+          </fieldset>
+          <footer class="grid">
+            <button id="calc-cntarr-btnsync" class="secondary">Synch</button>
+            <button id="calc-cntarr-btnasync">Asynch</button>
+            <div>Result: </div>
+            <div id="calc-cntarr-res"></div>
+          </footer>
+        </article>
+        <article>
+          <header>SumArray</header>
+          <fieldset role="group">
+            <label>Array<input id="calc-sumarr-arr" name="Arr" placeholder="Arr" value="[2,54,12.65,23,0.65]"/></label>
+          </fieldset>
+          <footer class="grid">
+            <button id="calc-sumarr-btnsync" class="secondary">Synch</button>
+            <button id="calc-sumarr-btnasync">Asynch</button>
+            <div>Result: </div>
+            <div id="calc-sumarr-res"></div>
+          </footer>
+        </article>
+      </div>
+      <div id="view-people" hidden>
+        <div class="grid2col">
+          <article>
+            <header>GetPeople</header>
+            <fieldset role="group">
+              <label>ID<input id="ppl-get-id" name="Id" placeholder="Id" value="123"/></label>
+            </fieldset>
+            <footer class="grid">
+              <button id="ppl-get-btnsync" class="secondary">Synch</button>
+              <button id="ppl-get-btnasync">Asynch</button>
+            </footer>
+          </article>
+          <article id="ppl-form-addcat">
+            <header>AddCat2People</header>
+            <fieldset class="grid">
+              <label>Name<input id="ppl-c2p-name" name="Name" value=""/></label>
+              <label>Birthday<input id="ppl-c2p-birth" type="date" name="Birthday" value=""/></label>
+              <fieldset>
+                <label>
+                  <input type="radio" id="ppl-c2p-male" name="cat-Sex" checked />
+                  Male
+                </label>
+                <label>
+                  <input type="radio" id="ppl-c2p-female" name="cat-Sex" />
+                  Female
+                </label>
+              </fieldset>
+            </fieldset>
+            <footer class="grid">
+              <button id="ppl-c2p-btnsync" class="secondary">Synch</button>
+              <button id="ppl-c2p-btnasync">Asynch</button>
+            </footer>
+          </article>
+        </div>
+        <div>
+          <article id="ppl-card">
+            <header>Owner</header>
+            <fieldset class="grid">
+              <label>First Name<input id="ppl-firstname" name="ppl-firstname" readonly/></label>
+              <label>Last Name<input id="ppl-lastname" name="ppl-lastname" readonly/></label>
+              <label>Birthday<input id="ppl-birthday" name="ppl-birthdat" readonly/></label>
+              <label>Sex<div id="ppl-sex"></div></label>
+            </fieldset>
+            <article>
+              <header>Top Cat [TPeople.Cat]</header>
+              <div class="grid2col">
+                <fieldset class="grid">
+                  <label>Name<input id="ppl-cat-name" name="ppl-cat-name" value=""/></label>
+                  <label>Birthday<input id="ppl-cat-birth" name="ppl-cat-birth" value=""/></label>
+                  <label>Sex<div id="ppl-cat-sex"></div></label>
+                </fieldset>  
+              </div>
+            </article>
+            <article>
+              <header>Other Cats [TPeople.Cats]</header>
+              <div id="ppl-cats" class="grid2col">
+                <article>
+                  <fieldset class="grid">
+                    <label>Name<input value=""/></label>
+                    <label>Birthday<input value=""/></label>
+                    <label>Sex<div></div></label>
+                  </fieldset>    
+                </article>
+              </div>
+            </article>
+          </article>
+        </div> 
+      </div> 
+    </div>
+  </main>
+  <footer class="container">
+    <small>Built with <a href="https://synopse.info/fossil/wiki/Synopse+OpenSource">mORMot</a> •
+      <a href="https://wiki.freepascal.org/pas2js">Pas2JS</a> •
+      <a href="https://github.com/SigmaSciences/mORMot-Web">mORMot-Web</a> •
+      <a href="https://picocss.com">PicoCSS</a>
+    </small>
+  </footer>
+  <dialog id="login-dialog" data-theme="light" open>
+    <article class="grid">
+      <form id="login-form" accept-charset="utf-8">
+        <hgroup>
+          <h1>Login</h1>
+          <h2>Default mORMot User: <b>User</b>, Password: <b>synopse</b> </h2>
+        </hgroup>
+        <input id="login-user" type="text" name="user" value="User" id="identity"  class="form-control", placeholder="User", required />
+        <input id="login-password" type="password" name="password" value="synopse" id="password"  class="form-control", placeholder="Password", required />
+        <small id="login-msg" style="color: red">Disconnected</small>        
+        <input id="login-btnsubmit" type="submit" name="submit" value="Login"  class="contrast" />
+      </form>
+    </article>
+  </dialog>  
+  <script>
+    window.addEventListener("load", rtl.run);
+  </script>
+</body>
+</html>

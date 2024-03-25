@@ -1,0 +1,33 @@
+/** sticky footer */
+html,
+body {
+  height: 100vh;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.grid2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+:root{
+  --pico-spacing: 0.5rem;
+  --pico-form-element-spacing-vertical: 0.25rem;
+}
+@media (min-width: 1536px) {
+  :root {
+    --pico-font-size: 125%;
+  }
+}

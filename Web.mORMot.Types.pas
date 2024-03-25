@@ -45,38 +45,7 @@ type
 
   TProcedureRef = reference to procedure;
 
-  function toRawUtf8(Value: JSValue): RawUtf8; // If Value is not a string, returns ''
-  function toDouble(Value: JSValue): Double;
-  function Iso8601ToDateTime(Value: JSValue): TDateTime;
-  function DateTimeToIso8601(Value: TDateTime): string;
-
 implementation
-
-function toRawUtf8(Value: JSValue): RawUtf8;
-begin
-  if IsString(Value) then
-    Result:=String(Value)
-  else
-    Result:='';
-end;
-
-function toDouble(Value: JSValue): Double;
-begin
-  Result := toNumber(Value);
-end;
-
-function Iso8601ToDateTime(Value: JSValue): TDateTime;
-begin
-  if isNumber(Value) then
-    Result := toDouble(Value)
-  else
-    Result := ISO8601ToDate(toString(Value));
-end;
-
-function DateTimeToIso8601(Value: TDateTime): string;
-begin
-  Result := DateToISO8601(Value);
-end;
 
 
 end.

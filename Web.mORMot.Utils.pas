@@ -14,6 +14,9 @@ interface
 
 uses
   SysUtils,
+  {$ifndef WEBLIB}
+  DateUtils,
+  {$endif}
 
   JS,
   Web,
@@ -36,7 +39,9 @@ function NowToIso8601: string;
 // - e.g. 'YYYY-MM-DD' 'Thh:mm:ss' or 'YYYY-MM-DDThh:mm:ss'
 // - if Date is 0, will return ''
 function DateTimeToIso8601(Value: TDateTime): string;
-
+function toRawUtf8(Value: JSValue): RawUtf8; // If Value is not a string, returns ''
+function toDouble(Value: JSValue): Double;
+function Iso8601ToDateTime(Value: JSValue): TDateTime;
 
 
 implementation
@@ -84,6 +89,7 @@ begin
   result := DateTimeToIso8601(Now);
 end;
 //------------------------------------------------------------------------------
+{$ifdef WEBLIB}
 function DateTimeToIso8601(Value: TDateTime): string;
 begin // e.g. YYYY-MM-DD Thh:mm:ss or YYYY-MM-DDThh:mm:ss
   if Value=0 then
@@ -93,6 +99,33 @@ begin // e.g. YYYY-MM-DD Thh:mm:ss or YYYY-MM-DDThh:mm:ss
   if trunc(Value)=0 then
     result := FormatDateTime('"T"hh":"nn":"ss',Value) else
     result := FormatDateTime('yyyy"-"mm"-"dd"T"hh":"nn":"ss',Value);
+end;
+{$else}
+function DateTimeToIso8601(Value: TDateTime): string;
+begin
+  Result := DateToISO8601(Value);
+end;
+{$endif}
+
+function toRawUtf8(Value: JSValue): RawUtf8;
+begin
+  if IsString(Value) then
+    Result:=String(Value)
+  else
+    Result:='';
+end;
+
+function toDouble(Value: JSValue): Double;
+begin
+  Result := toNumber(Value);
+end;
+
+function Iso8601ToDateTime(Value: JSValue): TDateTime;
+begin
+  if isNumber(Value) then
+    Result := toDouble(Value)
+  else
+    Result := ISO8601ToDate(toString(Value));
 end;
 
 
